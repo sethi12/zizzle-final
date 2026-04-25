@@ -1,0 +1,32 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // Ensure that you have the Google services classpath for Firebase
+        classpath 'com.google.gms:google-services:4.4.2' // Adjust to the latest version as necessary
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.22"
+        classpath 'com.android.tools.build:gradle:8.3.2'
+
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+// Configure the build directory location
+rootProject.buildDir = "../build"
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+    evaluationDependsOn(":app")
+}
+
+// Clean task for clearing the build directory
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}

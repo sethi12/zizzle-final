@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "263316561453",
+    "project_id": "zizzle-a5db3",
+    "storage_bucket": "zizzle-a5db3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:263316561453:android:44b2355bee39b9da4722a4",
+        "android_client_info": {
+          "package_name": "com.InbredTechno.Zizzle"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrubSHH_kf-fTAJh63VssW2nAaXbFGBXU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:263316561453:android:451a77a1953c8dba4722a4",
+        "android_client_info": {
+          "package_name": "com.example.requests"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrubSHH_kf-fTAJh63VssW2nAaXbFGBXU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

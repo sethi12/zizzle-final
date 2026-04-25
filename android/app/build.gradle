@@ -1,0 +1,106 @@
+// Apply the necessary plugins
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "com.google.gms.google-services"// The Flutter Gradle Plugin must be applied after the Android and Kotlin plugins
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+
+// Android configuration
+android {
+    namespace = "com.example.zizzle"
+    compileSdk = 35 // Ensure this value matches your Flutter config
+    ndkVersion = flutter.ndkVersion // NDK version from Flutter settings, if applicable
+
+    // Java compatibility options
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    // Kotlin compatibility options
+    kotlinOptions {
+        jvmTarget = "1.8" // Use 1.8 for compatibility with Flutter and Android libraries
+    }
+
+    // Default configuration for the application
+    defaultConfig {
+        applicationId "com.InbredTechno.Zizzle"
+        minSdk = 26 // Match your minSdk to Flutter’s requirements or project needs
+        targetSdk = 35 // Use Flutter’s targetSdk version
+        versionCode = 7 // Use Flutter’s version code
+        versionName = flutter.versionName // Use Flutter’s version name
+        multiDexEnabled = true // Enable MultiDex for large projects
+    }
+
+
+
+        signingConfigs {
+            release {
+                keyAlias = keystoreProperties['keyAlias']
+                keyPassword = keystoreProperties['keyPassword']
+                storeFile = keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+                storePassword = keystoreProperties['storePassword']
+            }
+        }
+        buildTypes {
+            release {
+                // TODO: Add your own signing config for the release build.
+                // Signing with the debug keys for now,
+                // so `flutter run --release` works.
+                signingConfig = signingConfigs.debug
+                signingConfig = signingConfigs.release
+            }
+        }
+
+}
+
+// Flutter configuration
+flutter {
+    source = "../.."
+}
+
+// Repositories for dependencies
+repositories {
+    google()
+    mavenCentral()
+}
+
+// Ensure all projects have access to the necessary dependencies
+dependencies {
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.20" // Ensure Kotlin standard library compatibility
+}
+
+// Ensure settings for all subprojects
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
