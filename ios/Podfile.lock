@@ -1192,7 +1192,8 @@ PODS:
     - Flutter
   - audioplayers_darwin (0.0.1):
     - Flutter
-  - better_player_plus (1.0.0):
+    - FlutterMacOS
+  - better_player_plus (1.1.2):
     - Cache (~> 6.0.0)
     - Flutter
     - GCDWebServer
@@ -1205,20 +1206,11 @@ PODS:
     - BoringSSL-GRPC/Interface (= 0.0.37)
   - BoringSSL-GRPC/Interface (0.0.37)
   - Cache (6.0.0)
-  - CashfreeAnalyticsSDK (2.2.0):
-    - CFNetworkSDK (= 2.2.0)
-  - CashfreePG (2.2.4):
-    - CashfreePGUISDK (= 2.2.4)
-  - CashfreePGCoreSDK (2.2.4):
-    - CashfreeAnalyticsSDK (= 2.2.0)
-  - CashfreePGUISDK (2.2.4):
-    - CashfreePGCoreSDK (= 2.2.4)
-  - CFNetworkSDK (2.2.0)
-  - cloud_firestore (5.6.11):
+  - cloud_firestore (5.6.12):
     - Firebase/Firestore (= 11.15.0)
     - firebase_core
     - Flutter
-  - cloud_functions (5.6.1):
+  - cloud_functions (5.6.2):
     - Firebase/Functions (= 11.15.0)
     - firebase_core
     - Flutter
@@ -1244,18 +1236,18 @@ PODS:
   - Firebase/Storage (11.15.0):
     - Firebase/CoreOnly
     - FirebaseStorage (~> 11.15.0)
-  - firebase_auth (5.6.2):
+  - firebase_auth (5.7.0):
     - Firebase/Auth (= 11.15.0)
     - firebase_core
     - Flutter
-  - firebase_core (3.15.1):
+  - firebase_core (3.15.2):
     - Firebase/CoreOnly (= 11.15.0)
     - Flutter
-  - firebase_messaging (15.2.9):
+  - firebase_messaging (15.2.10):
     - Firebase/Messaging (= 11.15.0)
     - firebase_core
     - Flutter
-  - firebase_storage (12.4.9):
+  - firebase_storage (12.4.10):
     - Firebase/Storage (= 11.15.0)
     - firebase_core
     - Flutter
@@ -1330,9 +1322,6 @@ PODS:
     - GoogleUtilities/Environment (~> 8.1)
     - GTMSessionFetcher/Core (< 5.0, >= 3.4)
   - Flutter (1.0.0)
-  - flutter_cashfree_pg_sdk (0.0.1):
-    - CashfreePG (= 2.2.4)
-    - Flutter
   - flutter_local_notifications (0.0.1):
     - Flutter
   - flutter_tts (0.0.1):
@@ -1498,14 +1487,14 @@ PODS:
   - PINOperation (1.2.3)
   - Porcupine-iOS (3.0.4):
     - ios-voice-processor (~> 1.2.0)
-  - porcupine_flutter (3.0.5):
+  - porcupine_flutter (3.0.6):
     - Flutter
     - Porcupine-iOS (~> 3.0.4)
   - PromisesObjC (2.4.0)
   - RecaptchaInterop (101.0.0)
   - Rhino-iOS (3.0.2):
     - ios-voice-processor (~> 1.2.0)
-  - rhino_flutter (3.0.4):
+  - rhino_flutter (3.0.6):
     - Flutter
     - Rhino-iOS (~> 3.0.2)
   - shared_preferences_foundation (0.0.1):
@@ -1516,8 +1505,8 @@ PODS:
     - FlutterMacOS
   - unity_ads_plugin (0.0.1):
     - Flutter
-    - UnityAds (= 4.15.0)
-  - UnityAds (4.15.0)
+    - UnityAds (= 4.17.0)
+  - UnityAds (4.17.0)
   - url_launcher_ios (0.0.1):
     - Flutter
   - video_compress (0.3.0):
@@ -1530,7 +1519,7 @@ PODS:
 
 DEPENDENCIES:
   - audio_session (from `.symlinks/plugins/audio_session/ios`)
-  - audioplayers_darwin (from `.symlinks/plugins/audioplayers_darwin/ios`)
+  - audioplayers_darwin (from `.symlinks/plugins/audioplayers_darwin/darwin`)
   - better_player_plus (from `.symlinks/plugins/better_player_plus/ios`)
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
   - cloud_functions (from `.symlinks/plugins/cloud_functions/ios`)
@@ -1540,7 +1529,6 @@ DEPENDENCIES:
   - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
   - firebase_storage (from `.symlinks/plugins/firebase_storage/ios`)
   - Flutter (from `Flutter`)
-  - flutter_cashfree_pg_sdk (from `.symlinks/plugins/flutter_cashfree_pg_sdk/ios`)
   - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
   - flutter_tts (from `.symlinks/plugins/flutter_tts/ios`)
   - flutter_voice_processor (from `.symlinks/plugins/flutter_voice_processor/ios`)
@@ -1565,11 +1553,6 @@ SPEC REPOS:
     - abseil
     - BoringSSL-GRPC
     - Cache
-    - CashfreeAnalyticsSDK
-    - CashfreePG
-    - CashfreePGCoreSDK
-    - CashfreePGUISDK
-    - CFNetworkSDK
     - Firebase
     - FirebaseAppCheckInterop
     - FirebaseAuth
@@ -1607,7 +1590,7 @@ EXTERNAL SOURCES:
   audio_session:
     :path: ".symlinks/plugins/audio_session/ios"
   audioplayers_darwin:
-    :path: ".symlinks/plugins/audioplayers_darwin/ios"
+    :path: ".symlinks/plugins/audioplayers_darwin/darwin"
   better_player_plus:
     :path: ".symlinks/plugins/better_player_plus/ios"
   cloud_firestore:
@@ -1626,8 +1609,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_storage/ios"
   Flutter:
     :path: Flutter
-  flutter_cashfree_pg_sdk:
-    :path: ".symlinks/plugins/flutter_cashfree_pg_sdk/ios"
   flutter_local_notifications:
     :path: ".symlinks/plugins/flutter_local_notifications/ios"
   flutter_tts:
@@ -1668,23 +1649,18 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   abseil: a05cc83bf02079535e17169a73c5be5ba47f714b
   audio_session: 9bb7f6c970f21241b19f5a3658097ae459681ba0
-  audioplayers_darwin: ccf9c770ee768abb07e26d90af093f7bab1c12ab
-  better_player_plus: 10794c0ed1b3b4ae058939e22a6172f850a2039b
+  audioplayers_darwin: 835ced6edd4c9fc8ebb0a7cc9e294a91d99917d5
+  better_player_plus: 3d40145c650bb83dde08f0d593b21a144196769f
   BoringSSL-GRPC: dded2a44897e45f28f08ae87a55ee4bcd19bc508
   Cache: 4ca7e00363fca5455f26534e5607634c820ffc2d
-  CashfreeAnalyticsSDK: ae25b71a54607c920d519103d154d9727ca2c15a
-  CashfreePG: 6554c215b8eabc9fa13e59c847262b8ba6f29ff6
-  CashfreePGCoreSDK: 133e1ba5aeb8a89bf2188eb3312c88fcad084c75
-  CashfreePGUISDK: 5e943fcca20c45b66c9837bbb87ebbfb75c013a5
-  CFNetworkSDK: 4e431b55f607544f5ca45bc1a36a13e602f51841
-  cloud_firestore: 8b8ad857da9a98527dab9c7ae520d0eba975bef9
-  cloud_functions: 2deea2254d9a845af7e6bcfe37bd2cb9887600fe
+  cloud_firestore: fdcc87898326e396d6ef6df543acf9b5c2034b95
+  cloud_functions: 8565a870fbdc2b5046cba8183e972484128b6d8d
   ffmpeg_kit_flutter_new: 97b2c798a30c08fac1381ff76202fd67d325df2f
   Firebase: d99ac19b909cd2c548339c2241ecd0d1599ab02e
-  firebase_auth: dad1f2f9c317dba1b300933a3f7622fa30eb721c
-  firebase_core: ece862f94b2bc72ee0edbeec7ab5c7cb09fe1ab5
-  firebase_messaging: e1a5fae495603115be1d0183bc849da748734e2b
-  firebase_storage: cda26bf5db7c2d71a7202a9e7cec99fca56418c5
+  firebase_auth: 50af8366c87bb88c80ebeae62eb60189c7246b9b
+  firebase_core: 995454a784ff288be5689b796deb9e9fa3601818
+  firebase_messaging: f4a41dd102ac18b840eba3f39d67e77922d3f707
+  firebase_storage: 1144b3236855c52ff52741b12374862ee84d5a28
   FirebaseAppCheckInterop: 06fe5a3799278ae4667e6c432edd86b1030fa3df
   FirebaseAuth: a6575e5fbf46b046c58dc211a28a5fbdd8d4c83b
   FirebaseAuthInterop: 7087d7a4ee4bc4de019b2d0c240974ed5d89e2fd
@@ -1700,9 +1676,8 @@ SPEC CHECKSUMS:
   FirebaseSharedSwift: e17c654ef1f1a616b0b33054e663ad1035c8fd40
   FirebaseStorage: 50fc9ee147392943e492467db6b52759b0447037
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
-  flutter_cashfree_pg_sdk: 969a7cfdec1a6b13fd0a1c2d1d0acd9d1768107a
   flutter_local_notifications: 395056b3175ba4f08480a7c5de30cd36d69827e4
-  flutter_tts: b88dbc8655d3dc961bc4a796e4e16a4cc1795833
+  flutter_tts: 35ac3c7d42412733e795ea96ad2d7e05d0a75113
   flutter_voice_processor: f60363f959515eaebc35bcaaf26017596c953fc6
   GCDWebServer: 2c156a56c8226e2d5c0c3f208a3621ccffbe3ce4
   GoogleDataTransport: aae35b7ea0c09004c3797d53c8c41f66f219d6a7
@@ -1711,30 +1686,30 @@ SPEC CHECKSUMS:
   gRPC-Core: 860978b7db482de8b4f5e10677216309b5ff6330
   GTMSessionFetcher: fc75fc972958dceedee61cb662ae1da7a83a91cf
   HLSCachingReverseProxyServer: 59935e1e0244ad7f3375d75b5ef46e8eb26ab181
-  image_picker_ios: 7fe1ff8e34c1790d6fff70a32484959f563a928a
+  image_picker_ios: e0ece4aa2a75771a7de3fa735d26d90817041326
   ios-voice-processor: 6b5ca08962f39e434fe39dca0f483d923a3b1b97
   just_audio: 4e391f57b79cad2b0674030a00453ca5ce817eed
   leveldb-library: cc8b8f8e013647a295ad3f8cd2ddf49a6f19be19
-  local_auth_darwin: 553ce4f9b16d3fdfeafce9cf042e7c9f77c1c391
+  local_auth_darwin: c3ee6cce0a8d56be34c8ccb66ba31f7f180aaebb
   location: 155caecf9da4f280ab5fe4a55f94ceccfab838f8
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
   package_info_plus: af8e2ca6888548050f16fa2f1938db7b5a5df499
-  path_provider_foundation: 080d55be775b7414fd5a5ef3ac137b97b097e564
+  path_provider_foundation: bb55f6dbba17d0dccd6737fe6f7f34fbd0376880
   PINCache: d9a87a0ff397acffe9e2f0db972ac14680441158
   PINOperation: fb563bcc9c32c26d6c78aaff967d405aa2ee74a7
   Porcupine-iOS: da103a8848ce6b36acd4a5e42bb811d4532dd515
-  porcupine_flutter: ce8290709f290b2a1c817c05ce607061d00ab540
+  porcupine_flutter: c74b9b5861bbe4a3a8976f7da2d98559ef6157d2
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   RecaptchaInterop: 11e0b637842dfb48308d242afc3f448062325aba
   Rhino-iOS: 19392b6663594385dad5c375a99484b383351e59
-  rhino_flutter: 823a440d488acdc117acc84195f1a3abd547cf3b
-  shared_preferences_foundation: 9e1978ff2562383bd5676f64ec4e9aa8fa06a6f7
+  rhino_flutter: 70ea2dba391dd15d9b3b6cf8a9e961399a8ab7a5
+  shared_preferences_foundation: 7036424c3d8ec98dfe75ff1667cb0cd531ec82bb
   sqflite_darwin: 20b2a3a3b70e43edae938624ce550a3cbf66a3d0
-  unity_ads_plugin: f4d6bfd61c4e7ee34714f7a1b7fac1222970a2d5
-  UnityAds: 5f487a7cf0b0cd162810cff51698f3ca0b4f8e68
-  url_launcher_ios: 694010445543906933d732453a59da0a173ae33d
+  unity_ads_plugin: 218d9a80d1aae5572000015c3f3a86f1a695f342
+  UnityAds: adbe0d522fd14b8298c5e159164fc43396165843
+  url_launcher_ios: 7a95fa5b60cc718a708b8f2966718e93db0cef1b
   video_compress: f2133a07762889d67f0711ac831faa26f956980e
-  video_player_avfoundation: 2cef49524dd1f16c5300b9cd6efd9611ce03639b
+  video_player_avfoundation: dd410b52df6d2466a42d28550e33e4146928280a
   wakelock_plus: e29112ab3ef0b318e58cfa5c32326458be66b556
 
 PODFILE CHECKSUM: 1959d098c91d8a792531a723c4a9d7e9f6a01e38

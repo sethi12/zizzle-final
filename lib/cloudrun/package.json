@@ -1,0 +1,20 @@
+{
+  "name": "zizzle-video-processor",
+  "version": "1.0.0",
+  "description": "Cloud Run video transcoding service for Zizzle",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@google-cloud/storage": "^7.19.0",
+    "express": "^4.18.2",
+    "firebase-admin": "^13.7.0",
+    "fluent-ffmpeg": "^2.1.2"
+  },
+  "private": true
+}

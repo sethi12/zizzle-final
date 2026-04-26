@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_cashfree_pg_sdk/api/cfpaymentgateway/cfpaymentgatewayservice.dart';
-import 'package:flutter_cashfree_pg_sdk/api/cfpayment/cfwebcheckoutpayment.dart';
-import 'package:flutter_cashfree_pg_sdk/api/cfsession/cfsession.dart';
-import 'package:flutter_cashfree_pg_sdk/utils/cfenums.dart';
-import 'package:flutter_cashfree_pg_sdk/api/cferrorresponse/cferrorresponse.dart';
+// import 'package:flutter_cashfree_pg_sdk/api/cfpaymentgateway/cfpaymentgatewayservice.dart';
+// import 'package:flutter_cashfree_pg_sdk/api/cfpayment/cfwebcheckoutpayment.dart';
+// import 'package:flutter_cashfree_pg_sdk/api/cfsession/cfsession.dart';
+// import 'package:flutter_cashfree_pg_sdk/utils/cfenums.dart';
+// import 'package:flutter_cashfree_pg_sdk/api/cferrorresponse/cferrorresponse.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
@@ -38,87 +38,87 @@ class _VerifyBadgeScreenState extends State<VerifyBadgeScreen> {
     }
   }
 
-  Future<void> _startPaymentViaFirebase({
-    required double amount,
-    required String username,
-  }) async {
-    try {
-      const functionUrl =
-          'https://createcashfreeorder-jymvzexgxa-uc.a.run.app'; // ✅ Cloud Run URL
-      const verifyUrl =
-          'https://us-central1-zizzle-a5db3.cloudfunctions.net/verifyCashfreePayment';
+  // Future<void> _startPaymentViaFirebase({
+  //   required double amount,
+  //   required String username,
+  // }) async {
+  //   try {
+  //     const functionUrl =
+  //         'https://createcashfreeorder-jymvzexgxa-uc.a.run.app'; // ✅ Cloud Run URL
+  //     const verifyUrl =
+  //         'https://us-central1-zizzle-a5db3.cloudfunctions.net/verifyCashfreePayment';
 
-      final response = await http.post(
-        Uri.parse(functionUrl),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({
-          'amount': amount,
-          'customerId': username,
-          'customerEmail': widget.email,
-          'customerPhone': number,
-        }),
-      );
+  //     final response = await http.post(
+  //       Uri.parse(functionUrl),
+  //       headers: {'Content-Type': 'application/json'},
+  //       body: jsonEncode({
+  //         'amount': amount,
+  //         'customerId': username,
+  //         'customerEmail': widget.email,
+  //         'customerPhone': number,
+  //       }),
+  //     );
 
-      if (response.statusCode != 200) {
-        throw Exception('Function failed: ${response.body}');
-      }
+  //     if (response.statusCode != 200) {
+  //       throw Exception('Function failed: ${response.body}');
+  //     }
 
-      final data = jsonDecode(response.body);
-      final orderId = data['orderId'];
-      final sessionId = data['sessionId'];
+  //     final data = jsonDecode(response.body);
+  //     final orderId = data['orderId'];
+  //     final sessionId = data['sessionId'];
 
-      final session = CFSessionBuilder()
-          .setEnvironment(CFEnvironment.PRODUCTION)
-          .setOrderId(orderId)
-          .setPaymentSessionId(sessionId)
-          .build();
+  //     final session = CFSessionBuilder()
+  //         .setEnvironment(CFEnvironment.PRODUCTION)
+  //         .setOrderId(orderId)
+  //         .setPaymentSessionId(sessionId)
+  //         .build();
 
-      final payment = CFWebCheckoutPaymentBuilder().setSession(session).build();
-      final cfService = CFPaymentGatewayService();
+  //     final payment = CFWebCheckoutPaymentBuilder().setSession(session).build();
+  //     final cfService = CFPaymentGatewayService();
 
-      cfService.setCallback(
-        (String successOrderId) async {
-          // ✅ Verify payment
-          final verifyResponse = await http.post(
-            Uri.parse(verifyUrl),
-            headers: {'Content-Type': 'application/json'},
-            body: jsonEncode({'orderId': successOrderId}),
-          );
+  //     cfService.setCallback(
+  //       (String successOrderId) async {
+  //         // ✅ Verify payment
+  //         final verifyResponse = await http.post(
+  //           Uri.parse(verifyUrl),
+  //           headers: {'Content-Type': 'application/json'},
+  //           body: jsonEncode({'orderId': successOrderId}),
+  //         );
 
-          if (verifyResponse.statusCode == 200) {
-            final data = jsonDecode(verifyResponse.body);
-            if (data['status'] == 'PAID') {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => PaymentSuccessScreen(
-                    orderid: successOrderId,
-                    planName: username,
-                    docid: username,
-                    caller: "Badge",
-                  ),
-                ),
-              );
-            } else {
-              GetIt.I<AlertService>().showError("Payment not completed.");
-            }
-          } else {
-            GetIt.I<AlertService>().showError("Failed to verify payment.");
-          }
-        },
-        (CFErrorResponse error, String failedOrderId) {
-          GetIt.I<AlertService>().showError(
-            'Payment failed: ${error.getMessage()}',
-          );
-        },
-      );
+  //         if (verifyResponse.statusCode == 200) {
+  //           final data = jsonDecode(verifyResponse.body);
+  //           if (data['status'] == 'PAID') {
+  //             Navigator.pushReplacement(
+  //               context,
+  //               MaterialPageRoute(
+  //                 builder: (context) => PaymentSuccessScreen(
+  //                   orderid: successOrderId,
+  //                   planName: username,
+  //                   docid: username,
+  //                   caller: "Badge",
+  //                 ),
+  //               ),
+  //             );
+  //           } else {
+  //             GetIt.I<AlertService>().showError("Payment not completed.");
+  //           }
+  //         } else {
+  //           GetIt.I<AlertService>().showError("Failed to verify payment.");
+  //         }
+  //       },
+  //       (CFErrorResponse error, String failedOrderId) {
+  //         GetIt.I<AlertService>().showError(
+  //           'Payment failed: ${error.getMessage()}',
+  //         );
+  //       },
+  //     );
 
-      await cfService.doPayment(payment); // ✅ Awaiting payment
-    } catch (e) {
-      debugPrint("🔥 Firebase/Payment Error: $e");
-      GetIt.I<AlertService>().showError('Server Error');
-    }
-  }
+  //     await cfService.doPayment(payment); // ✅ Awaiting payment
+  //   } catch (e) {
+  //     debugPrint("🔥 Firebase/Payment Error: $e");
+  //     GetIt.I<AlertService>().showError('Server Error');
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
